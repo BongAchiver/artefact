@@ -1,6 +1,10 @@
 Я проставлял сид везде, где только видел, но погрешность на 1-2 тысячных скора все равно остается. Что бы воспроизвести запуск надо:
 P.s. Вся работа была в conda окружении с Python 3.11.14
 
+
+1. Закиньте все .csv в data/raw
+
+2. Poetry:
 **Linux / macOS / WSL (Windows)**
 
 ```bash
@@ -19,10 +23,12 @@ poetry install
 
 !!! Я не до конца разобрался с poetry, по этому если из него не установился CatBoost и Optuna, надо вручную поставить !!!
 
+3. Если poetry не скачал кетбуст и оптюну
 ```bash
 pip install catboost optuna "optuna[catboost]"
 ```
 
+4. Запуск
 ```bash
 # 1. Подготовка данных (загрузка, фильтрация, feature engineering)
 poetry run python -m src.baseline.prepare_data

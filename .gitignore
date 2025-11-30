@@ -13,9 +13,6 @@ __pycache__/
 .vscode/
 .idea/
 
-# Project specific
-data/
-output/
 
 # Temporary files
 *.tmp
