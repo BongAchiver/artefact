@@ -115,7 +115,7 @@ def train() -> None:
     # Ensure model directory exists
     config.MODEL_DIR.mkdir(parents=True, exist_ok=True)
 
-    sample_size = 0.2
+    sample_size = 0.3
     sample_idxs = X_train.sample(frac=sample_size, random_state=config.RANDOM_STATE).index
 
     X_train_opt = X_train.loc[sample_idxs]
@@ -134,7 +134,7 @@ def train() -> None:
             "random_seed": config.RANDOM_STATE,
             "verbose": 500,
             "allow_writing_files": False,
-            "iterations": 1000,
+            "iterations": 3000,
             "depth": trial.suggest_int("depth", 4, 8),
             "learning_rate": trial.suggest_float("learning_rate", 0.01, 0.3, log=True),
             "l2_leaf_reg": trial.suggest_float("l2_leaf_reg", 1, 10),
@@ -152,7 +152,7 @@ def train() -> None:
         model.fit(
             train_pool,
             eval_set=val_pool,
-            early_stopping_rounds=100,
+            early_stopping_rounds=500,
         )
 
         preds = model.predict(val_pool)
