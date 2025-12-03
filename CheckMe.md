@@ -28,7 +28,7 @@ poetry install
 
 3. Если poetry не скачал кетбуст и оптюну
 ```bash
-pip install catboost optuna "optuna[catboost]"
+pip install catboost optuna "optuna-integration[catboost]"
 ```
 
 4. Запуск
